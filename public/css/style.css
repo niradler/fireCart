@@ -1,0 +1,24 @@
+/* YOUR CUSTOM STYLES
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+*/
+body {
+  background: transparent url("../img/bg.jpg") no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  height:100%;
+}
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.invisible {
+  visibility: hidden;
+}
