@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-    function pageInit() {}
+    function pageInit() {
+        $('#body').html('');
+    }
     var loggedIn = false;
 
     function route() {
@@ -11,7 +13,20 @@ $(document).ready(function() {
             $('#main').load('views/myCarts.html');
         }
     }
-
+window.storeItem = function(name,value,isObject){
+    if(isObject){
+            localStorage.setItem(name, JSON.stringify(value));
+    }else{
+        localStorage.setItem(name, value);
+    }
+}
+window.getItem = function(name,isObject){
+    if(isObject){
+            return JSON.parse(localStorage.getItem(name));
+    }else{
+        return localStorage.getItem(name);
+    }
+}
     function initApp() {
         // Listening for auth state changes.
         // [START authstatelistener]
@@ -29,8 +44,8 @@ $(document).ready(function() {
                 var providerData = user.providerData;
                 // [START_EXCLUDE silent]
                 loggedIn = true;
-                localStorage.setItem('loggedIn', uid);
-                console.log(user);
+                storeItem('loggedIn',user,1);
+                console.log("user",user);
                 route();
             } else {
                 localStorage.removeItem(loggedIn);
@@ -56,11 +71,13 @@ $(document).ready(function() {
         pageInit();
     });
     $('body').on('click', '#myCarts', function() {
+        pageInit()
         if (loggedIn) {
             $('#main').load('views/myCarts.html');
         }
     });
     $('body').on('click', '#newCart', function() {
+        pageInit()
         if (loggedIn) {
             $('#body').load('views/newCart.html');
         }
