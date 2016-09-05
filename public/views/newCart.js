@@ -8,7 +8,7 @@ function addCart(){
       'cartName':cartName,
       'createBy':user.uid,
       'createDate':cartDate.getTime(),
-      'users':{}
     });
-  $('#body').html('');
+    var itemKey = newRef.getKey();
+      $('#cartList').html('');
 }

@@ -43,11 +43,13 @@ window.getItem = function(name,isObject){
                 var uid = user.uid;
                 var providerData = user.providerData;
                 // [START_EXCLUDE silent]
-                loggedIn = true;
+                loggedIn = user;
                 storeItem('loggedIn',user,1);
                 console.log("user",user);
                 route();
+                $('#footer').load('views/footerNav.html');
             } else {
+                $('#footer').load('views/footer.html');
                 localStorage.removeItem(loggedIn);
                 loggedIn = false;
                 route();
@@ -76,11 +78,6 @@ window.getItem = function(name,isObject){
             $('#main').load('views/myCarts.html');
         }
     });
-    $('body').on('click', '#newCart', function() {
-        pageInit()
-        if (loggedIn) {
-            $('#body').load('views/newCart.html');
-        }
-    });
-    $('#footer').load('views/footer.html');
+
+
 });
