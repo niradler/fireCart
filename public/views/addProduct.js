@@ -18,4 +18,5 @@ function addProduct(){
     });
     var itemKey = newRef.getKey();
     $('#cartList').html('');
+    showCart(ccart);
 }

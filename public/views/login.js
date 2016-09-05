@@ -6,7 +6,7 @@ function toggleSignIn() {
   if (firebase.auth().currentUser) {
     // [START signout]
     firebase.auth().signOut();
-    localStorage.removeItem(loggedIn);
+    localStorage.removeItem('loggedIn');
     // [END signout]
   } else {
     var email = loginform[0][0].value;

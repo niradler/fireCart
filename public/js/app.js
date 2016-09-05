@@ -47,7 +47,9 @@ window.getItem = function(name,isObject){
                 storeItem('loggedIn',user,1);
                 console.log("user",user);
                 route();
-                $('#footer').load('views/footerNav.html');
+                $('#footer').load('views/footerNav.html',function(){
+                    $('#footerMenu').slideUp("slow");
+                });
             } else {
                 $('#footer').load('views/footer.html');
                 localStorage.removeItem(loggedIn);
@@ -77,6 +79,18 @@ window.getItem = function(name,isObject){
         if (loggedIn) {
             $('#main').load('views/myCarts.html');
         }
+    });
+
+    var foState = true;
+    $('body').on('click', '#tmenu', function() {
+        if(foState){
+            $('#footerMenu').slideUp("slow");
+            foState=false;
+        }else{
+            $('#footerMenu').slideDown("slow");
+            foState=true;
+        }
+
     });
 
 
